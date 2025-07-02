@@ -93,6 +93,13 @@ theme/massey/
 - **Templates**: `theme/*/templates/**/*.mustache`
 - **Language files**: `theme/*/lang/en/*.php`
 
+## Development Environment Access
+
+**Local Moodle Instance**:
+- URL: `http://localhost:8046`
+- Username: `arowatt`
+- Password: `doc.JAD33`
+
 ## Testing & Quality
 
 Run linting before committing:
