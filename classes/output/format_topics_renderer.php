@@ -14,19 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace theme_massey\output;
+use core_courseformat\base as course_format;
+use core_courseformat\output\local\content;
+use theme_massey\output\core\course_renderer;
+
 /**
- * Massey theme version file.
+ * Class format_topics_rendered
  *
- * @package   theme_massey
- * @copyright 2025 Massey University
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_massey
+ * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->version   = 2025070101; // YYYYMMDDHH (year, month, day, 24-hr format hour).
-$plugin->requires  = 2024042200; // Moodle 4.4 (Build: 20240422).
-$plugin->component = 'theme_massey';
-$plugin->dependencies = [
-    'theme_boost' => 2024042200,
-];
+class format_topics_renderer extends \format_topics\output\renderer {
+    use format_section_trait;
+}
