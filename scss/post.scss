@@ -63,3 +63,50 @@
         padding-left: 1.5rem;
     }
 }
+
+.massey_booktoc-wrapper {
+    display:flex;
+
+    > * {
+        flex: 1;
+        min-width: 20em;
+    }
+}
+
+.massey_booktoc {
+    ol {
+        list-style-position: inside;
+    }
+
+    > ol {
+        padding-left: 0;
+    }
+    
+    li > ol {
+        padding-left: 2em;
+    }
+
+    &.massey_booktoc-numbering1 {
+        ol {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        li:before {
+            counter-increment: section;
+            content: counters(section, ".") " ";
+        }
+    }
+
+    &.massey_booktoc-numbering2 {
+        ol {
+            list-style-type: disc;
+        }
+
+        li {
+            list-style-type: disc;
+        }
+    }
+
+
+}

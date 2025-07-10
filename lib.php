@@ -69,6 +69,8 @@ function theme_massey_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 
+    
+
     return $scss;
 }
 
@@ -79,10 +81,11 @@ function theme_massey_get_main_scss_content($theme) {
  * @return string
  */
 function theme_massey_get_pre_scss($theme) {
+    global $CFG;
+
     $scss = '';
-    
-    // Import Roboto font
-    // $scss .= '@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");' . "\n";
+
+    $scss .= file_get_contents($CFG->dirroot . '/theme/massey/scss/snap.scss');
     
     $configurable = [
         'brandcolor' => 'primary',
@@ -113,6 +116,8 @@ function theme_massey_get_extra_scss($theme) {
     global $CFG;
     
     $content = '';
+
+    
     
     // Add our custom post SCSS
     $content .= file_get_contents($CFG->dirroot . '/theme/massey/scss/post.scss');
