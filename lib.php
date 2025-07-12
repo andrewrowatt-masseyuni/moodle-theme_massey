@@ -54,24 +54,19 @@ function theme_massey_pluginfile($course, $cm, $context, $filearea, $args, $forc
 function theme_massey_get_main_scss_content($theme) {
     global $CFG;
 
+    $pre = '';
     $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
-    $fs = get_file_storage();
+    $post = '';
 
-    $context = context_system::instance();
-    if ($filename == 'default.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    } else if ($filename == 'plain.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_massey', 'preset', 0, '/', $filename))) {
-        $scss .= $presetfile->get_content();
-    } else {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    }
+    // Pre CSS - this is loaded AFTER any prescss from the setting but before the main scss.
+    $pre = file_get_contents($CFG->dirroot . '/theme/massey/scss/pre.scss');
 
-    
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
 
-    return $scss;
+    // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
+    $post = file_get_contents($CFG->dirroot . '/theme/massey/scss/main.scss');
+
+    return "$pre\n$scss\n$post";
 }
 
 /**
@@ -84,20 +79,6 @@ function theme_massey_get_pre_scss($theme) {
     global $CFG;
 
     $scss = '';
-
-    $scss .= file_get_contents($CFG->dirroot . '/theme/massey/scss/snap.scss');
-    
-    $configurable = [
-        'brandcolor' => 'primary',
-    ];
-
-    foreach ($configurable as $configkey => $target) {
-        ${$configkey} = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
-    }
-
-    if (!empty($brandcolor)) {
-        $scss .= '$primary: ' . $brandcolor . ";\n";
-    }
 
     if (!empty($theme->settings->scsspre)) {
         $scss .= $theme->settings->scsspre;

@@ -56,9 +56,9 @@ $THEME->scss = function($theme) {
     return theme_massey_get_main_scss_content($theme);
 };
 
-$THEME->extrascsscallback = 'theme_massey_get_extra_scss';
+//$THEME->extrascsscallback = 'theme_massey_get_extra_scss';
 
-$THEME->prescsscallback = 'theme_massey_get_pre_scss';
+//$THEME->prescsscallback = 'theme_massey_get_pre_scss';
 
 $THEME->layouts = [
     'base' => array(

@@ -1,0 +1,1370 @@
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Custom styles for Massey theme.
+ *
+ * @package   theme_massey
+ * @copyright 2025 Massey University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Import Roboto font (alternative location)
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+$font-size-base: 2rem; // Base font size
+//$font-family-base: 'Roboto', sans-serif; // Base font family
+
+//@import "../../boost/scss/preset/default";
+
+// @import "../../boost/scss/moodle";
+
+// Custom footer styling
+#massey-custom-footer {
+    background-color: #565656;
+    border-top: 1px solid #dee2e6;
+    margin-top: auto;
+
+    // Ensure footer text is readable
+    color: white;
+    font-weight: 300;
+
+    // Style any links in the footer
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
+    // Style any headings in the footer
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 0.5rem;
+    }
+
+    // Style any lists in the footer
+    ul,
+    ol {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.massey_booktoc-wrapper {
+    display:flex;
+
+    > * {
+        flex: 1;
+        min-width: 20em;
+    }
+
+    &:not(.massey_booktoc-wrapper-no-description) .massey_booktoc {
+        border-left: 1px solid $border-color;
+        padding-left: 1em;
+        margin-left: 0.5em;
+    }   
+}
+
+.massey_booktoc {
+    ol {
+        list-style-position: inside;
+    }
+
+    > ol {
+        padding-left: 0;
+    }
+    
+    li > ol {
+        padding-left: 2em;
+    }
+
+    p.chapter-heading {
+        font-weight: 400;
+    }
+
+    &.massey_booktoc-numbering1 {
+        ol {
+            counter-reset: section;
+            list-style-type: none;
+        }
+
+        li:before {
+            counter-increment: section;
+            content: counters(section, ".") " ";
+            margin-right: 0.5em;
+        }
+    }
+
+    &.massey_booktoc-numbering2 {
+        ol {
+            list-style-type: disc;
+        }
+
+        li {
+            list-style-type: disc;
+        }
+    }
+
+
+}
+
+.section .activity.modtype_label.label {
+    font-weight: 300;
+}
+
+/*
+    Ex Snap theme
+*/
+
+/*
+Colour name	Left border hex	Background and icon hex
+Blue	4c81af	edf2f7
+Green	81ab5f	f2f7ef
+Grey	757575	f1f1f1
+Teal	44a4ad	ecf6f7
+Violet	7561aa	f1eff7
+Yellow	c3a542	f9f6ec
+*/
+
+/* Styling - Activate */
+/* Variables */
+:root {
+	--blue-base:#4c81af;
+	--green-base:#81ab5f;
+	--grey-base:#757575;
+	--teal-base:#44a4ad;
+	--violet-base:#7561aa;
+	--yellow-base:#c3a542;
+	
+	--blue-dark1:#edf2f7;
+	--green-dark1:#f2f7ef;
+	--grey-dark1:#f1f1f1;
+	--teal-dark1:#ecf6f7;
+	--violet-dark1:#f1eff7;
+	--yellow-dark1:#f9f6ec;
+}
+/* End Variables */
+
+/* Staff capability v1 */
+table[class^=mu-staffcapability-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-staffcapability-] td { padding: 10px;position: relative; }
+table[class^=mu-staffcapability-] td p:last-child { margin-bottom: 0; }
+table[class^=mu-staffcapability-] td::before {
+	content: '\f0aa';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+	transform: rotate(45deg);
+}
+
+table[class^=mu-staffcapability-] td::after {
+    content: 'Once you have finished with this information you can delete this label.';
+    display: block;
+    padding: 0.75em;
+    font-size: smaller;
+    margin-top: 1em;
+    background-color: rgba(255,255,255,0.6);
+    font-style: italic;
+}
+
+table.mu-staffcapability-ped {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-staffcapability-tech {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+/* Staff capability v2 LMS0162 */
+table[class^=mu-activateguide-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #ffeeba #ffeeba #ffeeba #ffecb3;
+    background-color: #fff3cd;
+    width: 100%;
+    color: #856404;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-activateguide-] td { padding: 10px;position: relative; }
+table[class^=mu-activateguide-] td p:last-child { margin-bottom: 0; }
+table[class^=mu-activateguide-] td::before {
+	content: '\f29c';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+table[class^=mu-activateguide-] td::after {
+    content: 'Once you have finished with this information you can delete this table.';
+    display: block;
+    padding: 0.75em;
+    font-size: smaller;
+    margin-top: 1em;
+    background-color: rgba(255,255,255,0.6);
+    font-style: italic;
+}
+
+table.mu-activateguide-teacher {
+/* default style */
+}
+
+table.mu-activateguide-tool {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-activateguide-tool td::before {
+    content: '\f013';
+	color: #fff;
+}
+
+body:not(.moodle-role-non-student):not(#tinymce) table[class^=mu-activateguide-] {
+    display: none;
+}
+/* End Staff capability */
+
+
+
+/* Activate Learning Section headings */
+/* Defaults */
+table[class^=mu-activate-] {
+	border-width: 5px 0 0 0;
+	border-style: solid;
+	border-color: #4c81af;
+	width: 100%;
+	background-image: url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_blue.png);
+	min-height: 140px;
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+table[class^=mu-activate-] tr { vertical-align: middle; }
+table[class^=mu-activate-] td { padding-left: 120px; }
+
+/* AirTable */
+table.mu-activate-learn-async-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_blue.png);}
+table.mu-activate-learn-async-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_green.png);}
+table.mu-activate-learn-async-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_grey.png);}
+table.mu-activate-learn-async-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_teal.png);}
+table.mu-activate-learn-async-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_violet.png);}
+table.mu-activate-learn-async-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_async_yellow.png);}
+table.mu-activate-learn-sync-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_blue.png);}
+table.mu-activate-learn-sync-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_green.png);}
+table.mu-activate-learn-sync-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_grey.png);}
+table.mu-activate-learn-sync-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_teal.png);}
+table.mu-activate-learn-sync-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_violet.png);}
+table.mu-activate-learn-sync-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/learn_sync_yellow.png);}
+table.mu-activate-apply-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_blue.png);}
+table.mu-activate-apply-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_green.png);}
+table.mu-activate-apply-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_grey.png);}
+table.mu-activate-apply-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_teal.png);}
+table.mu-activate-apply-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_violet.png);}
+table.mu-activate-apply-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/apply_yellow.png);}
+table.mu-activate-experience-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_blue.png);}
+table.mu-activate-experience-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_green.png);}
+table.mu-activate-experience-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_grey.png);}
+table.mu-activate-experience-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_teal.png);}
+table.mu-activate-experience-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_violet.png);}
+table.mu-activate-experience-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/experience_yellow.png);}
+table.mu-activate-optional-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_blue.png);}
+table.mu-activate-optional-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_green.png);}
+table.mu-activate-optional-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_grey.png);}
+table.mu-activate-optional-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_teal.png);}
+table.mu-activate-optional-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_violet.png);}
+table.mu-activate-optional-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/optional_yellow.png);}
+table.mu-activate-get-thinking-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_blue.png);}
+table.mu-activate-get-thinking-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_green.png);}
+table.mu-activate-get-thinking-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_grey.png);}
+table.mu-activate-get-thinking-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_teal.png);}
+table.mu-activate-get-thinking-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_violet.png);}
+table.mu-activate-get-thinking-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/get_thinking_yellow.png);}
+table.mu-activate-checklist-blue{border-color:#4c81af;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_blue.png);}
+table.mu-activate-checklist-green{border-color:#81ab5f;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_green.png);}
+table.mu-activate-checklist-grey{border-color:#757575;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_grey.png);}
+table.mu-activate-checklist-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_teal.png);}
+table.mu-activate-checklist-violet{border-color:#7561aa;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_violet.png);}
+table.mu-activate-checklist-yellow{border-color:#c3a542;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/checklist_yellow.png);}
+
+/* TTW 2024-08-16 */
+table.mu-activate-growth-teal{border-color:#44a4ad;background-image:url(/pluginfile.php/4214022/mod_folder/content/0/learning_sections/growth_teal.png);}
+/* End */
+
+/* Activate - Other */
+/* Duration of task */
+table.mu-time tr::before { content: '🕒'; padding-right: 0.25em; }
+table.mu-time { margin-bottom: 1rem; }
+
+table.mu-time-right tr::before { content: '🕒'; padding-right: 0.25em; }
+table.mu-time-right { margin-bottom: 1rem; float: right; width: auto; }
+
+tr.mu-time-right { position: relative; }
+tr.mu-time-right td { position: absolute; right: 0; font-size: 1.25rem; }
+tr.mu-time-right td::before { content: '\f017' !important; font-family: 'FontAwesome' !important; left: -15px !important; position: absolute !important; color: #565656 !important; font-size: 1.25rem; }
+/* End */
+/* End Styling - Activate */
+
+/* Teacher prompt */
+body:not(.moodle-role-non-student):not(#tinymce) .mu-teacherprompt {
+    display: none;
+}
+
+table.mu-teacherprompt { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f8d7da #f8d7da #f8d7da #facfd5;
+    background-color: #f8d7da;
+    width: 100%;
+    xcolor: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table.mu-teacherprompt td { padding: 10px;position: relative; }
+table.mu-teacherprompt td p:last-child { margin-bottom: 0; }
+table.mu-teacherprompt td::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #721c24;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+table.mu-teacherprompt td::after {
+    content: 'Once you have finished with this information you can delete this table.';
+    display: block;
+    padding: 0.75em;
+    font-size: smaller;
+    margin-top: 1em;
+    background-color: rgba(255,255,255,0.6);
+    font-style: italic;
+}
+/* End Teacher Prompt */
+
+/* Compact H5P view */
+li.stealth.modtype_hvp {
+	width: 31%;
+    margin: 1%;
+    float: left;
+    clear: none;
+	border-width: 1px;
+}
+
+@media (max-width: 767.98px) {
+li.stealth.modtype_hvp {
+    width: 99%;
+    margin: 1em auto;
+}
+}
+
+li.stealth.modtype_hvp .asset-wrapper {
+	padding: 0.5em;
+}
+
+li.stealth.modtype_hvp .snap-header-card {
+	display: none;
+}
+
+li.stealth.modtype_hvp .activityinstance .activityicon {
+	width: 24px;
+	height: 24px;
+	margin-top: -1px;
+    margin-right: .25em;
+	opacity: 0.3;
+	display: none;
+}
+li.stealth.modtype_hvp .snap-stealth-tag {
+	background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+li.stealth.modtype_hvp .snap-asset-link p {
+	margin: 0;
+	padding: 4px 0;
+	font-size: 0.75em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+li.stealth.modtype_hvp .snap-asset-actions>a, .snap-asset-actions .snap-edit-more-dropdown, .snap-asset-actions .snap-asset-move {
+	padding: 0;
+}
+
+/* LMS0195 Activate Activity Buttons start */
+a[class^=mu-activate-button-] {
+	color:white!important;
+	font-size: x-large;
+    font-weight: 400;
+	
+    display: block;
+    margin: 0 auto;
+    min-width: 300px;
+    width: 30%;
+    text-align: center;
+	padding: 0.25em 1em;
+	border-radius: 0.25em;
+	
+	box-shadow: 0 2px 12px 0px rgba(0,0,0,.25);
+}
+
+a[class^=mu-activate-button-]:hover {
+	box-shadow: 0 2px 12px 0px rgba(0,0,0,.50);
+	text-decoration: none;
+}
+
+a.mu-activate-button-blue {
+	background-color: var(--blue-base);
+}
+
+a.mu-activate-button-green {
+	background-color: var(--green-base);
+}
+
+a.mu-activate-button-grey {
+	background-color: var(--grey-base);
+}
+
+a.mu-activate-button-teal {
+	background-color: var(--teal-base);
+}
+
+a.mu-activate-button-violet {
+	background-color: var(--violet-base);
+}
+
+a.mu-activate-button-yellow {
+	background-color: var(--yellow-base);
+}
+/* LMS0195 Activate Activity Buttons end */
+
+/* LMS0257 start */
+.modtype_label.draft {
+	:has(.mut-section-notes),
+	:has(.mut-teacher-information),
+	:has(table.mu-activateguide-teacher),
+	:has(table.mu-teacherprompt)
+	{
+		.snap-asset-meta {
+			display:none;
+		}
+		
+		.snap-conditional-tag {
+			display:none!important;
+		}
+		
+		.snap-asset-content .no-overflow {
+			height:calc(0.1em + 54px + 1em);
+			overflow:hidden;
+			position: relative;
+			
+			&:after {
+				content: "";
+				position: absolute;
+				z-index: 1;
+				bottom: 0;
+				left: 0;
+				pointer-events: none;
+				background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 90%);
+				width: 100%;
+				height: 1em;
+			}
+			
+			.mut-section-notes,
+			.mut-teacher-information
+			{
+				opacity:0.7;
+				background-color: white;
+			}
+
+			table.mu-activateguide-teacher,
+			table.mu-teacherprompt
+			 {
+				opacity:0.7;
+			}
+
+		}
+		
+		h5:after {
+			content:"Unhide this label to see all the content";
+			font-size:14px;
+			margin-left:0.25em;
+			font-style:italic;
+			font-weight:400;
+			color:black;
+			padding:4px 12px 4px 8px;
+			border-radius: 16px;
+			background-color: #0001;
+		}
+	}
+}
+/* LMS0257 end */
+
+/* LMS0258 start */
+/*
+Note: removed LMS0165
+
+To-do:
+nesting!
+div.mut {
+}
+*/
+.mut {
+	/* variables */
+
+	a {
+		text-decoration: underline;
+	}
+
+	&.mut-section-notes,
+	&.mut-teacher-information,
+	&.mut-learningqualityguidelines,
+	.mut-task-description {
+		position: relative;
+		padding: .75rem;
+		margin-bottom: 0;
+		border-left: 8px solid transparent;
+		font-weight: 300;
+	}
+
+	&.mut-section-notes {
+	/* yellow */
+		color: #664d03;
+		background-color: #fff3cd;
+		border-color: #ffeeba;
+		border-left-color: #ffe69c !important;
+	}
+
+	&.mut-section-notes h5 {
+		color: #664d03;
+	}
+
+	&.mut-teacher-information {
+	/* light-blue */
+		color: #0c5460;
+		background-color: #d1ecf1;
+		border-color: #bee5eb;
+		border-left-color: #bee5eb !important;
+	}
+
+	&.mut-teacher-information h5 {
+		color: #0c5460;
+	}
+
+	&.mut-learningqualityguidelines {
+	/* light-blue */
+		color: #0c5460;
+		background-color: #d1ecf1;
+		border-color: #bee5eb;
+	}
+
+	.mut-task-description {
+	/* red */
+		color: #721c24;
+		background-color: #f8d7da;
+		border-color: #f5c6cb;
+		border-left-color: #facfd5 !important;
+	}
+
+	.mut-task-description h5:first-of-type {
+		color: #721c24;
+	}
+
+	div.alert
+	{
+		margin-bottom: 0;
+		padding: .75rem;
+		font-style: italic;
+		font-size: smaller;
+		background-color: rgba(255,255,255,0.6);
+		border: none;
+		margin-top: 0.75em;
+		display: block;
+	}
+
+}
+/* Completed tasks (label is visible) */
+li.modtype_label:not(.draft) .mut.mut-task {
+	display: none;
+}
+/* LMS0258 end */
+
+
+/* Styling - Based on work by Bruce MacKay CoHSS */
+/* Should set default font to Roboto */
+table[class^=mu-] {
+    font-family: inherit;
+}
+
+/* Table 1*/
+table[class^=mu-table1-] { font-size: 90%; margin-bottom: 1rem; }
+table[class^=mu-table1-] tr { vertical-align: top }
+table[class^=mu-table1-] td, table[class^=mu-table1-] th { padding: 5px; border: 1px solid black; }
+table[class^=mu-table1-] thead td, table[class^=mu-table1-] th { background-color: #f9f4e8; font-weight: 500; } /* mismatch in editor - > tbody > tr > td are not bold due to clunky editor overrides*/
+table[class^=mu-table1-] ul { margin: 0!important; }
+
+table.mu-table1-grey thead td, table.mu-table1-grey th { background-color: #f1f1f1; }
+table.mu-table1-yellow thead td, table.mu-table1-yellow th { background-color: #f9f4e8; }
+
+/* LMS0160 QFE (Global) */
+table[class^=mu-table1-] p {
+    margin: 0;
+}
+/* End Table*/
+
+/* Emphasis 1 */
+table[class^=mu-emphasis1-] { border-width: 0 0 0 10px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+}
+
+table[class^=mu-emphasis1-] > tbody > tr > td { padding: 10px; }
+table[class^=mu-emphasis1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+
+/*
+mu-xxx Concept
+https://stream.massey.ac.nz/course/view.php?id=27720#section-22
+*/
+
+div.mu {
+	/* defaults */
+	 --mu-accent-color: #4c81af;
+	 --mu-background-color: #f4f7f9;
+}
+ 
+ div.mu-green {
+	 --mu-accent-color: #81ab5f;
+	 --mu-background-color: #f2f7ef;
+ }
+ 
+ div.mu-blue {
+	 --mu-accent-color: #4c81af;
+	 --mu-background-color: #f4f7f9;
+ }
+ 
+div.mu-emphasis {
+    border-width: 0 0 0 10px;
+    border-style: solid;
+    border-color: var(--mu-background-color) var(--mu-background-color) var(--mu-background-color) var(--mu-accent-color);
+    background-color: var(--mu-background-color);
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	padding:10px;
+}
+
+div.mu-activity {
+	border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: var(--mu-background-color) var(--mu-background-color) var(--mu-background-color) var(--mu-accent-color);
+    background-color: var(--mu-background-color);
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+	padding: 10px;
+}
+
+div.mu-activity::before {
+	content: '\f27a';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+
+div.mu-watch {
+}
+
+div.mu-watch::before {
+	content: '\f03d';
+}
+
+
+
+table[class^=mu-watch1-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-watch1-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-watch1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-watch1-] > tbody > tr > td::before {
+	content: '\f03d';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+
+
+/*
+mu-xxx Concept
+*/
+
+table.mu-emphasis1-blue {
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+}
+
+table.mu-emphasis1-green {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-emphasis1-grey {
+    border-color: #f1f1f1 #f1f1f1 #f1f1f1 #757575;
+    background-color: #f1f1f1;
+}
+
+table.mu-emphasis1-teal {
+    border-color: #ecf6f7 #ecf6f7 #ecf6f7 #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table.mu-emphasis1-violet {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+table.mu-emphasis1-yellow {
+    border-color: #f9f6ec #f9f6ec #f9f6ec #c3a542;
+    background-color: #f9f6ec;
+}
+/* End Emphasis */
+
+/* Quote 1*/
+table.mu-quote1 { border-width: 0 0 0 10px;
+    border-width: 0 0 0 5px;
+    border-style: solid;
+    border-color: #fff #fff #fff #eee;
+    background-color: #fff;
+    width: 100%;
+	margin-bottom: 1rem;
+}
+
+table.mu-quote1 > tbody > tr > td { padding: 30px; }
+table.mu-quote1 > tbody > tr > td p:last-child { margin-bottom: 0; }
+
+/* Quote 2*/
+table.mu-quote2 { border-width: 1px;
+    border-style: solid;
+    border-color: #cecece;
+    background-color: #fff;
+    width: 100%;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+table.mu-quote2 > tbody > tr > td { padding: 24px 60px; }
+table.mu-quote2 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-quote2 > tbody > tr > td::before {
+	content: '\f10d';
+	font-family: 'FontAwesome';
+    font-size: 40px;
+    color: #cecece;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+table.mu-quote2 > tbody > tr > td::after  {
+	content: '\f10e';
+	font-family: 'FontAwesome';
+    font-size: 40px;
+    color: #cecece;
+    position: absolute;
+    right: 10px;
+    bottom: -4px;
+}
+/* End */
+
+/* Watch 1 */
+table[class^=mu-watch1-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-watch1-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-watch1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-watch1-] > tbody > tr > td::before {
+	content: '\f03d';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+table.mu-watch1-blue {
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+}
+
+table.mu-watch1-green {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-watch1-grey {
+    border-color: #f1f1f1 #f1f1f1 #f1f1f1 #757575;
+    background-color: #f1f1f1;
+}
+
+table.mu-watch1-teal {
+    border-color: #ecf6f7 #ecf6f7 #ecf6f7 #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table.mu-watch1-violet {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+table.mu-watch1-yellow {
+    border-color: #f9f6ec #f9f6ec #f9f6ec #c3a542;
+    background-color: #f9f6ec;
+}
+/* End Watch 1 */
+
+/* Read 1 */
+table[class^=mu-read1-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-read1-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-read1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-read1-] > tbody > tr > td::before {
+	content: '\f02d';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+table.mu-read1-blue {
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+}
+
+table.mu-read1-green {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-read1-grey {
+    border-color: #f1f1f1 #f1f1f1 #f1f1f1 #757575;
+    background-color: #f1f1f1;
+}
+
+table.mu-read1-teal {
+    border-color: #ecf6f7 #ecf6f7 #ecf6f7 #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table.mu-read1-violet {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+table.mu-read1-yellow {
+    border-color: #f9f6ec #f9f6ec #f9f6ec #c3a542;
+    background-color: #f9f6ec;
+}
+/* End Read 1 */
+
+/* Activity 1 */
+table[class^=mu-activity1-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table[class^=mu-activity1-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-activity1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-activity1-] > tbody > tr > td::before {
+	content: '\f27a';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -35px;
+    top: 5px;
+}
+
+table.mu-activity1-blue {
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+}
+
+table.mu-activity1-green {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table.mu-activity1-grey {
+    border-color: #f1f1f1 #f1f1f1 #f1f1f1 #757575;
+    background-color: #f1f1f1;
+}
+
+table.mu-activity1-teal {
+    border-color: #ecf6f7 #ecf6f7 #ecf6f7 #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table.mu-activity1-violet {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+table.mu-activity1-yellow {
+    border-color: #f9f6ec #f9f6ec #f9f6ec #c3a542;
+    background-color: #f9f6ec;
+}
+/* End Activity 1 */
+
+/* Subtle */
+/* Watch 2 */
+table.mu-watch2 { border-width: 1px;
+    border-style: solid;
+    border-color: #b9b9b9;
+    background-color: #f1f1f1;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table.mu-watch2 > tbody > tr > td { padding: 10px 10px 10px 60px; }
+table.mu-watch2 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-watch2 > tbody > tr > td::before {
+	content: '\f03d';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #b9b9b9;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Watch 2 */
+
+/* Read 2  */
+table.mu-read2 { border-width: 1px;
+    border-style: solid;
+    border-color: #b9b9b9;
+    background-color: #f1f1f1;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+table.mu-read2 > tbody > tr > td { padding: 10px 10px 10px 60px; }
+table.mu-read2 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-read2 > tbody > tr > td::before {
+	content: '\f02d';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #b9b9b9;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Read 2 */
+
+/* Activity 2  */
+table.mu-activity2 { border-width: 1px;
+    border-style: solid;
+    border-color: #b9b9b9;
+    background-color: #f1f1f1;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+	
+table.mu-activity2 > tbody > tr > td { padding: 10px 10px 10px 60px; }
+table.mu-activity2 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-activity2 > tbody > tr > td::before {
+	content: '\f27a';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #b9b9b9;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Activity 2 */
+/* End 2 Subtle */
+
+/* Icon overrides*/
+td.mu-icon-override-none::before { content: ''}
+table[class^=mu-] > tbody > tr > td.mu-icon-override-write::before { content: '\f040'}
+table[class^=mu-] > tbody > tr > td.mu-icon-override-checkmark::before { content: '\f00c'}
+
+table[class^=mu-] > tbody > tr > td.mu-icon-override-listen::before { content: '\f025';}
+table[class^=mu-activity1] > tbody > tr > td.mu-icon-override-listen::before { left: -36px;}
+
+table[class^=mu-] > tbody > tr > td.mu-icon-override-process::before { content: '\f085';} 
+table[class^=mu-activity1] > tbody > tr > td.mu-icon-override-process::before { left: -38px;}
+
+table[class^=mu-] > tbody > tr > td.mu-icon-override-group::before { content: '\f0c0'}
+table[class^=mu-activity1] > tbody > tr > td.mu-icon-override-group::before { left: -38px;}
+
+table[class^=mu-] > tbody > tr > td.mu-icon-override-explore::before { content: '\f2de'}
+table[class^=mu-activity1] > tbody > tr > td.mu-icon-override-explore::before { left: -37px;}
+
+table[class^=mu-] > tbody > tr > td.mu-icon-override-comment::before { content: '\f086'}
+
+/* LMS0158 */
+table[class^=mu-] > tbody > tr > td.mu-icon-override-information::before { content: '\f05a'}
+table[class^=mu-] > tbody > tr > td.mu-icon-override-guidance::before { content: '\f277'}
+table[class^=mu-] > tbody > tr > td.mu-icon-override-map::before { content: '\f279'}
+table[class^=mu-] > tbody > tr > td.mu-icon-override-important::before { content: '\f071'}
+
+/* LMS0184 */
+table[class^=mu-] > tbody > tr > td.mu-icon-override-question-mark::before { content: '\f128';left:-32px;}
+
+/* Warning 1  */
+table.mu-warning1 { border-width: 1px;
+    border-style: solid;
+    border-color: #ffeeba;
+    background-color: #fff3cd;
+    width: 100%;
+    color: #856404;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+table.mu-warning1 a { text-decoration: underline; color: #856404 !important; }
+
+table.mu-warning1 > tbody > tr > td { padding: 10px 10px 10px 60px; }
+table.mu-warning1 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-warning1 > tbody > tr > td::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #856404;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Warning 1 */
+
+/* LMS0178 Image 1 */
+table[class^=mu-image1-] { border-width: 0 0 0 10px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+	overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: smaller;
+    font-family: inherit;
+}
+
+table[class^=mu-image1-][class*=left] { float: left;max-width: 330px;border-width: 0 10px 0 0;margin-right:1em;}
+table[class^=mu-image1-][class*=right] { float: right;max-width: 330px;margin-left:1em;}
+	
+table[class^=mu-image1-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-image1-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-image1-] > tbody > tr:first-child > td > p:first-child,
+table[class^=mu-image1-] > tbody > tr:first-child > td img
+ { margin-bottom: 10px; display: block; width: 100%;} /* Assumes it is the image */
+
+table[class^=mu-image1-] a.popup { position: relative; display: block;}
+table[class^=mu-image1-] a.popup::after {
+    content: '\f0b2';
+    font-family: 'FontAwesome';
+    font-size: 24px;line-height:36px;
+    color: #333;
+    background-color:#cccc;
+    position: absolute; top: 4px; right: 4px;
+    width: 36px;height:36px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+table[class^=mu-image1-blue] {
+    border-color: #4c81af;
+    background-color: #f4f7f9;
+}
+
+table[class^=mu-image1-green] {
+    border-color: #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table[class^=mu-image1-grey] {
+    border-color: #757575;
+    background-color: #f1f1f1;
+}
+
+table[class^=mu-image1-teal] {
+    border-color: #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table[class^=mu-image1-violet] {
+    border-color: #7561aa;
+    background-color: #f1eff7;
+}
+
+table[class^=mu-image1-yellow] {
+    border-color: #c3a542;
+    background-color: #f9f6ec;
+}
+/* End LMS0178 Image 1 */
+
+/* Information 1 LMS0182 */
+table.mu-information1 { border-width: 1px;
+    border-style: solid;
+    border-color: #ffeeba;
+    background-color: #fff3cd;
+    width: 100%;
+    color: #856404;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+table.mu-information1 a { text-decoration: underline; color: #856404 !important; }
+
+table.mu-information1 > tbody > tr > td { padding: 10px 10px 10px 60px; }
+table.mu-information1 > tbody > tr > td p:last-child { margin-bottom: 0; }
+table.mu-information1 > tbody > tr > td::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #856404;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Information 1 LMS0182 */
+
+/* End Styling */
+
+/* Mediasite */
+a.mu-mediasite1[href^="https://webcast.massey.ac.nz/Mediasite/Play"]
+ { display: block; position: relative; width: 100%; padding-bottom: 66% !important; background-image: url(/pluginfile.php/4214022/mod_folder/content/0/mediasite-play1.png); background-repeat: no-repeat; background-position: center; background-color: #000; color: #000 !important; line-height: 0; font-size: 0;}
+/* End Mediasite */
+
+/* Padlet */
+a.mu-padlet-external-tool-link
+ { display: block; overflow:hidden; position: relative; width: 100%; height:608px; background-image: url(/pluginfile.php/4214022/mod_folder/content/0/padlet_placeholder_white1.png); background-repeat: no-repeat; background-position: center; background-color: #000; color: #000 !important; line-height: 0; font-size: 0;}
+/* End Padlet */
+
+
+
+/* End Styling */
+
+
+
+
+
+
+/* Additional HTML **NOT** theme CSS */
+/* Warning 1  */
+p.mu-warning1 { border-width: 1px;
+    border-style: solid;
+    border-color: #ffeeba;
+    background-color: #fff3cd;
+    width: 100%;
+    color: #856404;
+	margin-bottom: 1rem;
+	position: relative;
+	padding: 10px 10px 10px 60px;
+}
+
+p.mu-warning1 a { text-decoration: underline; color: #856404 !important; }
+
+p.mu-warning1::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #856404;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Warning 1 */
+
+/* Information 1 LMS0182 */
+.mu-information1 { border-width: 1px;
+    border-style: solid;
+    border-color: #ffeeba;
+    background-color: #fff3cd;
+    width: 100%;
+    color: #856404;
+	margin-bottom: 1rem;
+	position: relative;
+	padding: 10px 10px 10px 60px;
+}
+
+.mu-information1 a { text-decoration: underline; color: #856404 !important; }
+
+.mu-information1::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+    font-size: 32px;
+    color: #856404;
+    position: absolute;
+    left: 14px;
+    top: 3px;
+}
+/* End Information 1 LMS0182 */
+
+/*
+
+*/
+
+/* In development / not used */
+
+/* LMS0178 Image 2 */
+table[class^=mu-image2-] { border-width: 0 0 0 50px;
+    border-style: solid;
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+    width: 100%;
+    color: #696969;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+table[class^=mu-image2-][class*=left] { float: left;max-width: 370px;margin-right:1em;}
+table[class^=mu-image2-][class*=right] { float: right;max-width: 370px;margin-left:1em;}
+	
+table[class^=mu-image2-] > tbody > tr > td { padding: 10px;position: relative; }
+table[class^=mu-image2-] > tbody > tr > td p:last-child { margin-bottom: 0; }
+table[class^=mu-image2-] > tbody > tr:first-child > td > p:first-child,
+table[class^=mu-image2-] > tbody > tr:first-child > td img
+ { margin-bottom: 10px; display: block; } /* Assumes it is the image */
+table[class^=mu-image2-] > tbody > tr:first-child > td::before {
+	content: '\f03e';
+	font-family: 'FontAwesome';
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: -37px;
+    top: 5px;
+}
+
+table[class^=mu-image2-] a.popup { position: relative; display: block;}
+table[class^=mu-image2-] a.popup::after {
+    content: '\f0b2';
+    font-family: 'FontAwesome';
+    font-size: 24px;line-height:36px;
+    color: black;
+    background-color:white;
+    border: 1px solid black;
+    position: absolute; top: 4px; right: 4px;
+    width: 36px;height:36px;
+    text-align: center;
+}
+
+table[class^=mu-image2-blue] {
+    border-color: #f4f7f9 #f4f7f9 #f4f7f9 #4c81af;
+    background-color: #f4f7f9;
+}
+
+table[class^=mu-image2-green] {
+    border-color: #f2f7ef #f2f7ef #f2f7ef #81ab5f;
+    background-color: #f2f7ef;
+}
+
+table[class^=mu-image2-grey] {
+    border-color: #f1f1f1 #f1f1f1 #f1f1f1 #757575;
+    background-color: #f1f1f1;
+}
+
+table[class^=mu-image2-teal] {
+    border-color: #ecf6f7 #ecf6f7 #ecf6f7 #44a4ad;
+    background-color: #ecf6f7;
+}
+
+table[class^=mu-image2-violet] {
+    border-color: #f1eff7 #f1eff7 #f1eff7 #7561aa;
+    background-color: #f1eff7;
+}
+
+table[class^=mu-image2-yellow] {
+    border-color: #f9f6ec #f9f6ec #f9f6ec #c3a542;
+    background-color: #f9f6ec;
+}
+/* End Image 2 */
