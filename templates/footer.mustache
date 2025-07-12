@@ -38,13 +38,6 @@
 }}
 
 <footer id="page-footer" class="footer-popover bg-white">
-{{#hasfootercontent}}
-    <div id="massey-custom-footer" class="massey-footer mt-3 py-3 border-top">
-        <div class="container">
-            {{{ footercontent }}}
-        </div>
-    </div>
-{{/hasfootercontent}}
     <div data-region="footer-container-popover">
         {{#output.has_communication_links}}
             <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon bg-primary text-white icon-no-margin btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
@@ -102,6 +95,13 @@
         </div>
     </div>
 </footer>
+{{#hasfootercontent}}
+    <div id="massey-custom-footer" class="massey-footer mt-3 py-3 border-top">
+        <div class="container">
+            {{{ footercontent }}}
+        </div>
+    </div>
+{{/hasfootercontent}}
 {{#js}}
 require(['theme_boost/footer-popover'], function(FooterPopover) {
     FooterPopover.init();
