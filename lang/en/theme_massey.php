@@ -24,6 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['chapters'] = 'Chapters';
 $string['pluginname'] = 'Massey';
 $string['choosereadme'] = 'Massey is a clean, modern theme based on Boost with custom footer functionality.';
 $string['configtitle'] = 'Massey theme settings';

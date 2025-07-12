@@ -48,30 +48,34 @@ trait format_section_trait {
             self::getmodules($data->singlesection->cmlist->cms);
         } else {
             foreach ($data->sections as $section) {
-                self::getmodules($section->cmlist->cms);
+                if (isset($section->cmlist) && isset($section->cmlist->cms)) {
+                    self::getmodules($section->cmlist->cms);
+                }
             }
         }
 
-        foreach ($this->modules as $module) {
-            $moduleIDs[$module->module][] = $module->id;
-        }
+        if (count($this->modules) > 0) {
+            // If the section/s contain module/s that we are interested in, then process them.
 
-        foreach ($moduleIDs as $module => $moduleIDlist) {
-            $modmethod = "getmod_{$module}_data";
-            
-            if (method_exists($this,  $modmethod )) {
-                call_user_func([$this, $modmethod], $moduleIDlist);
+            foreach ($this->modules as $module) {
+                $moduleIDs[$module->module][] = $module->id;
             }
-        }
 
-        // echo '<pre>'; var_dump($this->moduledata); echo '</pre>'; // Debugging line to see the module IDs.
+            foreach ($moduleIDs as $module => $moduleIDlist) {
+                $modmethod = "getmod_{$module}_data";
+                
+                if (method_exists($this,  $modmethod )) {
+                    call_user_func([$this, $modmethod], $moduleIDlist);
+                }
+            }
 
-        foreach ($this->modules as $module) {
-            /** @var $module object */
-            
-            $modmethod = "getmod_{$module->module}_html";
-            if (method_exists($this,  $modmethod )) {
-                call_user_func([$this, $modmethod], $module);
+            foreach ($this->modules as $module) {
+                /** @var $module object */
+                
+                $modmethod = "getmod_{$module->module}_html";
+                if (method_exists($this,  $modmethod )) {
+                    call_user_func([$this, $modmethod], $module);
+                }
             }
         }
 
@@ -79,8 +83,6 @@ trait format_section_trait {
     }
 
     private function getmodules(array $cms): void {
-        // This is a helper function to get the book module from the course modules.
-        // It will return the first book module found or null if none exists.
         foreach ($cms as $cmitem) {
             if (in_array($cmitem->cmitem->module, $this->targetmodules)) {
                 $this->modules[] = $cmitem->cmitem;
@@ -95,21 +97,24 @@ trait format_section_trait {
         if ($module->cmformat->altcontent) {
             $html .= "<div class=\"massey_booktoc-wrapper\"><div>{$module->cmformat->altcontent}</div>";
         } else {
-            $html .= "<div>";
+            $html .= "<div class=\"massey_booktoc-wrapper massey_booktoc-wrapper-no-description\">";
         }
+
         $firstchapter = true;
         $subschapter = false;
 
         foreach ($data as $bookchapter) {
             if ($bookchapter->cmid == $cmid) {
                 if ($firstchapter) {
-                    $html .= "<div class=\"massey_booktoc massey_booktoc-numbering{$bookchapter->numbering}\"><ol>";
+                    $html .= "<div class=\"massey_booktoc massey_booktoc-numbering{$bookchapter->numbering}\">";
+                    $tocheading = "<p class=\"chapter-heading mb-0\">".get_string('chapters', 'theme_massey')."</p>";
+                    $html .= $tocheading;
+                    $html .= "<ol>";
                     $html .= "<li><a href=\"/mod/book/view.php?id={$cmid}&chapterid={$bookchapter->bookchapterid}\">" .
                         $bookchapter->chaptertitle . "</a>";
                     $firstchapter = false;
                     continue;
                 }
-                // $html .= "<li><a href=\"/mod/book/view.php?id={$cmid}&chapterid={$bookchapter->bookchapterid}\">" . $bookchapter->chaptertitle . "</a>";
 
                 if (!$subschapter && $bookchapter->subchapter) {
                     $html .= "<ol><li>";
@@ -125,7 +130,7 @@ trait format_section_trait {
                     $bookchapter->chaptertitle . "</a>";
             }
         }
-        $module->cmformat->altcontent = "$html</li></ol></div></div>"; // '<div class="alert alert-info">Book module link</div>';
+        $module->cmformat->altcontent = "$html</li></ol></div></div>";
     }
 
     function getmod_book_data(array $moduleIDlist): void {
@@ -157,6 +162,7 @@ trait format_section_trait {
             'dataid' => 'cutoffdate',
             'label' => 'Cut off:',
             'timestamp' => time(),
-            'datestring' => 'today' ];
+            'datestring' => 'AJRtoday',
+            'presentation' => 'badge badge-info' ];
     }
 }
