@@ -32,8 +32,11 @@ trait format_section_trait {
 
     protected function render_delegatedsection($widget): string {
         $data = $widget->export_for_template($this); // You get an object with properties.
-        // echo '<pre>'; var_dump($data->cmlist->cms); echo '</pre>';
-        self::process_cms($data->cmlist->cms);
+        // echo '<pre>'; var_dump($data); echo '</pre>';
+        if (isset($data->cmlist) && isset($data->cmlist->cms)) {
+            self::process_cms($data->cmlist->cms);
+        }
+        
         return $this->render_from_template($widget->get_template_name($this), $data);
     }
 
