@@ -29,6 +29,14 @@ trait format_section_trait {
     private $moduleIDs = [];
     private $moduledata = [];
 
+
+    protected function render_delegatedsection($widget): string {
+        $data = $widget->export_for_template($this); // You get an object with properties.
+        // echo '<pre>'; var_dump($data->cmlist->cms); echo '</pre>';
+        self::process_cms($data->cmlist->cms);
+        return $this->render_from_template($widget->get_template_name($this), $data);
+    }
+
     /**
      * Render the content of a widget.
      * 
@@ -44,15 +52,28 @@ trait format_section_trait {
     protected function render_content(\core_courseformat\output\local\content $widget) {
         $data = $widget->export_for_template($this); // You get an object with properties.
 
+        // This method is called either from course/section.php course/view.php 
+
         if (isset($data->singlesection)) {
-            self::getmodules($data->singlesection->cmlist->cms);
+            self::process_cms($data->singlesection->cmlist->cms);
         } else {
             foreach ($data->sections as $section) {
                 if (isset($section->cmlist) && isset($section->cmlist->cms)) {
-                    self::getmodules($section->cmlist->cms);
+                    self::process_cms($section->cmlist->cms);
                 }
             }
         }
+
+        return $this->render_from_template($widget->get_template_name($this), $data);
+    }
+
+    /**
+     * Generic meoth to process the course modules in the given array.
+     *
+     * @param array $cms The course modules to process.
+     */
+    private function process_cms(array $cms): void {
+        self::getmodules($cms);
 
         if (count($this->modules) > 0) {
             // If the section/s contain module/s that we are interested in, then process them.
@@ -79,7 +100,6 @@ trait format_section_trait {
             }
         }
 
-        return $this->render_from_template($widget->get_template_name($this), $data);
     }
 
     private function getmodules(array $cms): void {
@@ -158,11 +178,31 @@ trait format_section_trait {
     }
 
     function getmod_assign_html(object $module): void {
+        $now = time();
+        if (isset($module->cmformat->dates->hasdates) && $module->cmformat->dates->hasdates) {
+            foreach($module->cmformat->dates->activitydates as &$activitydate) {
+                $activitydate['timezone'] = userdate(time(), '%Z');
+                if ($activitydate['timestamp'] > $now) {
+                    $activitydate['presentation'] = 'mu-badge-success';
+                } else {
+                    $activitydate['presentation'] = 'mu-badge-danger';
+                }
+                // echo '<pre>'; var_dump($activitydate); echo '</pre>';
+            }
+        }
+
+        // Add cut-off date.
+
         $module->cmformat->dates->activitydates[] = [
             'dataid' => 'cutoffdate',
             'label' => 'Cut off:',
             'timestamp' => time(),
             'datestring' => 'AJRtoday',
-            'presentation' => 'badge badge-info' ];
+            'presentation' => 'mu-badge-info',
+            'timezone' => userdate(time(), '%Z'),
+        ];
+
+        $module->cmformat->dates->hasdates = true;
     }
+
 }
