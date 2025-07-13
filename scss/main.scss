@@ -134,6 +134,37 @@ $font-size-base: 2rem; // Base font size
     font-weight: 300;
 }
 
+.mu-badge {
+    padding: $badge-padding-y $badge-padding-x;
+    @include border-radius($badge-border-radius);
+
+    // Default colour of "info"
+    @include alert-variant(theme-color-level("info", $alert-bg-level), theme-color-level("info", $alert-border-level), theme-color-level("info", $alert-color-level));
+}
+
+// Alternate styles
+// Generate contextual modifier classes for colorising the badge using the same process as core alert.
+@each $color, $value in $theme-colors {
+  .mu-badge-#{$color} {
+    @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
+  }
+}
+
+.activity_date {
+    .activity_date-label {
+        font-weight: 400;
+        margin-right: 0.25em;
+    }
+
+    .activity_date-date {
+    }
+
+    .activity_date-timezone {
+        font-size: 0.8em;
+        margin-left: 0.25em;
+    }
+}
+
 /*
     Ex Snap theme
 */
