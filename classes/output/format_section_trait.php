@@ -32,11 +32,12 @@ trait format_section_trait {
 
     protected function render_delegatedsection($widget): string {
         $data = $widget->export_for_template($this); // You get an object with properties.
-        // echo '<pre>'; var_dump($data); echo '</pre>';
         if (isset($data->cmlist) && isset($data->cmlist->cms)) {
-            self::process_cms($data->cmlist->cms);
+            self::getmodules($data->cmlist->cms);
         }
-        
+
+        $this->process_cms();
+
         return $this->render_from_template($widget->get_template_name($this), $data);
     }
 
@@ -58,14 +59,16 @@ trait format_section_trait {
         // This method is called either from course/section.php course/view.php 
 
         if (isset($data->singlesection)) {
-            self::process_cms($data->singlesection->cmlist->cms);
+            self::getmodules($data->singlesection->cmlist->cms);
         } else {
             foreach ($data->sections as $section) {
                 if (isset($section->cmlist) && isset($section->cmlist->cms)) {
-                    self::process_cms($section->cmlist->cms);
+                    self::getmodules($section->cmlist->cms);
                 }
             }
         }
+
+        $this->process_cms();
 
         return $this->render_from_template($widget->get_template_name($this), $data);
     }
@@ -75,9 +78,7 @@ trait format_section_trait {
      *
      * @param array $cms The course modules to process.
      */
-    private function process_cms(array $cms): void {
-        self::getmodules($cms);
-
+    private function process_cms(): void {
         if (count($this->modules) > 0) {
             // If the section/s contain module/s that we are interested in, then process them.
 
@@ -206,6 +207,12 @@ trait format_section_trait {
         ];
 
         $module->cmformat->dates->hasdates = true;
+    }
+
+
+    public function course_index_drawer($format): string {
+        // This is working
+        return $this->render_from_template('core_courseformat/local/courseindex/drawer', []);     
     }
 
 }
